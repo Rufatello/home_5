@@ -7,4 +7,4 @@ class Command(BaseCommand):
         Product.objects.all().delete()
         Categoties.objects.all().delete()
 
-        call_command('loaddata', '/home/geydarovr/Загрузки/two_django_djob/data.json')
+        call_command('loaddata', 'data.json')
