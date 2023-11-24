@@ -9,6 +9,6 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Categoties)
 class CategotiesAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'name',)
+    list_display = ('pk', 'name','image')
 
 

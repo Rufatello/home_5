@@ -5,9 +5,10 @@ NO = {'blank': True, 'null':True}
 class Categoties(models.Model):
     name = models.CharField(max_length=100, verbose_name='наименование')
     descripsions = models.TextField(verbose_name='описание', **NO)
+    image = models.ImageField(upload_to='Categoties/', **NO, verbose_name='фото')
 
     def __str__(self):
-        return f'{self.name}'
+        return f'{self.name}, {self.image}'
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'

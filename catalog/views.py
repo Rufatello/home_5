@@ -1,9 +1,13 @@
 from django.shortcuts import render
-
+from catalog.models import Categoties
 # Create your views here.
 def catalog(request):
+    Categoties_list = Categoties.objects.all()
+    context = {
+        'object_list': Categoties_list
 
-    return render(request, 'catalog/catalog.html')
+    }
+    return render(request, 'catalog/catalog.html', context)
 
 def home(request):
     return render(request, 'catalog/home.html')
