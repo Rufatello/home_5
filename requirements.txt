@@ -1,6 +1,4 @@
-Django==4.2.7
-sqlparse==0.4.4
-typing_extensions==4.8.0
+Django
 Pillow
 psycopg2-binary
 ipython

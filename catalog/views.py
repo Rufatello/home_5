@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from catalog.models import Categoties
+from catalog.models import Categoties, Product
 # Create your views here.
 def catalog(request):
     Categoties_list = Categoties.objects.all()
@@ -20,3 +20,11 @@ def contact(request):
         print(name, phone, message)
     return render(request, 'catalog/contact.html')
 
+
+def product(request):
+    Product_list = Product.objects.all()
+    context = {
+        'object_list': Product_list
+
+    }
+    return render(request, 'catalog/product.html', context)

@@ -8,7 +8,7 @@ class Categoties(models.Model):
     image = models.ImageField(upload_to='Categoties/', **NO, verbose_name='фото')
 
     def __str__(self):
-        return f'{self.name}, {self.image}'
+        return f'{self.name}, {self.image}, {self.pk}'
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
