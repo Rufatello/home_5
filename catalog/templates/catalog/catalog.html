@@ -1,7 +1,7 @@
   {% extends 'catalog/general.html' %}
   {% block name %}
   <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-      <h1 class="display-4">Каталог</h1>
+      <h1 class="display-4">Авторы цитат</h1>
   </div>
   {% endblock %}
 
@@ -38,5 +38,6 @@
           </div>
           {% endfor %}
           </div>
+     <a class="p-2 btn btn-outline-primary" href="{% url 'add_categories' %}">добавление категории</a>
 
   {% endblock %}

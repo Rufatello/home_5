@@ -4,8 +4,8 @@ NO = {'blank': True, 'null':True}
 
 class Categoties(models.Model):
     name = models.CharField(max_length=100, verbose_name='наименование')
-    descripsions = models.TextField(verbose_name='описание', **NO)
-    image = models.ImageField(upload_to='Categoties/', **NO, verbose_name='фото')
+    descriptions = models.TextField(verbose_name='описание')
+    image = models.ImageField(upload_to='Categoties/', verbose_name='фото')
 
     def __str__(self):
         return f'{self.name}, {self.image}, {self.pk}'
@@ -30,4 +30,4 @@ class Product(models.Model):
         verbose_name_plural = 'Продукты'
 
 
-# Create your models here.
+
