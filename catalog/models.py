@@ -8,7 +8,7 @@ class Categoties(models.Model):
     image = models.ImageField(upload_to='Categoties/', verbose_name='фото')
 
     def __str__(self):
-        return f'{self.name}, {self.image}, {self.pk}'
+        return f'{self.name}, {self.image}, {self.pk}, {self.descriptions}'
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
@@ -23,7 +23,7 @@ class Product(models.Model):
     data_last = models.DateField(verbose_name='дата создания', **NO)
 
     def __str__(self):
-        return f'{self.name}, {self.categories}, {self.price}'
+        return f'{self.name}, {self.categories}, {self.price},{self.descripsions}, {self.price}'
 
     class Meta:
         verbose_name = 'Продукт'

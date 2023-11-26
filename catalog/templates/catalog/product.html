@@ -1,7 +1,7 @@
   {% extends 'catalog/general.html' %}
   {% block name %}
   <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-      <h1 class="display-4">Цитаты</h1>
+      <h1 class="display-4">Продукты</h1>
   </div>
   {% endblock %}
 
@@ -27,12 +27,18 @@
               <div class="card-body">
                 <p class="card-text">{{ object.name }}</p>
                 <div class="d-flex justify-content-between align-items-center">
+                  <div class="card-body">
+                      <p class="card-text">{{ object.descripsions|slice:':100' }}</p>
+                    <div class="card-body">
+                      <p class="card-text"> Цена за 1 кг - {{ object.price }}р.</p>
                   <div class="btn-group">
                     <div class="like-container">
                       <button class="like-button">👍</button>
                       <span class="like-count">0</span>
                     </div>
                   </div>
+                      </div>
+                    </div>
                 </div>
 
               </div>
