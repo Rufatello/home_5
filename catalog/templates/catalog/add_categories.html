@@ -23,16 +23,16 @@
                         {% csrf_token %}
                         <div class="mb-3">
                             <label for="name">Имя</label>
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Ваше имя" required>
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Введите наименование" required>
                         </div>
                         <div class="mb-3">
                             <label for="descriptions">Описание</label>
                             <input type="text" name="descriptions" class="form-control" id="descriptions" placeholder="Введите описание" required>
                         </div>
-                        <div class="mb-3">
-                            <input type="file" name="image"><br />
+                        <div class="mb-3" >
+                            <input type="file"  name="image"><br />
                         </div>
-                        <input type="submit" class="btn btn-lg btn-block btn-outline-primary" value="Отправить">
+                            <input method="post" type="submit" class="btn btn-lg btn-block btn-outline-primary" value="Отправить">
                     </form>
 
                 </div>

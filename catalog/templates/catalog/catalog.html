@@ -29,9 +29,12 @@
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
                     <div class="card-body">
-                      <p class="card-text">{{ object.descriptions|slice:':50' }}</p>
+                      <p class="card-text">{{ object.descriptions|slice:':100' }}</p>
 
-                    <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'product' %}">Подробнее</a>
+                      <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'product' category_id=category.id %}">Подробнее</a>
+
+
+
                   </div>
                     </div>
                 </div>

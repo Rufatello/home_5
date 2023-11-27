@@ -21,19 +21,23 @@ def contact(request):
     return render(request, 'catalog/contact.html')
 
 
-def product(request):
-    Product_list = Product.objects.all()
-    context = {
-        'object_list': Product_list
+def product(request, category_id):
+    category = Categoties.objects.get(id=category_id)
+    product_list = Product.objects.filter(categories_id=category)
 
+    context = {
+        'object_list': product_list,
+        'category': category
     }
     return render(request, 'catalog/product.html', context)
+
+
 
 def add_categories(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         descriptions = request.POST.get('descriptions')
-        image = request.POST.get('image')
+        image = request.FILES.get('image')
         new_category = Categoties(name=name, descriptions=descriptions, image=image)
         new_category.save()
     return render(request, 'catalog/add_categories.html' )
