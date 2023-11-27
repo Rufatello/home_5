@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from catalog.models import Categoties, Product
+from django.http import HttpRequest, HttpResponse
+from django.shortcuts import render, get_object_or_404, redirect
 # Create your views here.
 def catalog(request):
     Categoties_list = Categoties.objects.all()
