@@ -1,4 +1,5 @@
   {% extends 'catalog/general.html' %}
+  {% load mediapath %}
   {% block name %}
   <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
       <h1 class="display-4">Продукты</h1>
@@ -23,7 +24,7 @@
           <div class="col">
 
             <div class="card shadow-sm">
-               <img  src="/media/{{ object.image }}" width="100%" height="225">
+               <img  src="{% mediapath object.image %}" width="100%" height="225">
               <div class="card-body">
                 <p class="card-text">{{ object.name }}</p>
                 <div class="d-flex justify-content-between align-items-center">
@@ -40,7 +41,8 @@
                   <div class="btn-group">
                     <div class="like-container">
                       <button class="like-button">👍</button>
-                      <span class="like-count">0</span>
+                        <p>Лайков {% like_count 6 %}</p>
+
                     </div>
                   </div>
                       </div>
