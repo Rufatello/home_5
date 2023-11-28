@@ -7,9 +7,9 @@
 {% endblock %}
 
 {% block nav %}
-<a class="p-2 btn btn-outline-primary" href="/">Главная страница</a>
+<a class="p-2 btn btn-outline-primary" href="{% url 'catalog:home' %}">Главная страница</a>
 
-<a class="p-2 btn btn-outline-primary" href="{% url 'catalog' %}">Каталог</a>
+<a class="p-2 btn btn-outline-primary" href="{% url 'catalog:catalog' %}">Каталог</a>
 {% endblock %}
 {% block telo %}
 <div class="row text-start">

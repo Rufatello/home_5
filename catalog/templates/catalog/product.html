@@ -6,9 +6,9 @@
   {% endblock %}
 
   {% block nav %}
-  <a class="p-2 btn btn-outline-primary" href="/">Главная страница</a>
+  <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:home' %}">Главная страница</a>
 
-  <a class="p-2 btn btn-outline-primary" href="{% url 'contact' %}">Контакты</a>
+  <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:contact' %}">Контакты</a>
   {% endblock %}
   {% block telo %}
 
@@ -30,7 +30,13 @@
                   <div class="card-body">
                       <p class="card-text">{{ object.descripsions|slice:':100' }}</p>
                     <div class="card-body">
-                      <p class="card-text"> Цена за 1 кг - {{ object.price }}р.</p>
+                        {% if object.pk == 5 %}
+                            <p class="card-text">Цена за 1 упаковку кг - {{ object.price }}р.</p>
+                        {% else %}
+                            <p class="card-text">Цена за 1 кг - {{ object.price }}р.</p>
+                        {% endif %}
+                    </div>
+
                   <div class="btn-group">
                     <div class="like-container">
                       <button class="like-button">👍</button>

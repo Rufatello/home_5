@@ -6,9 +6,9 @@
   {% endblock %}
 
   {% block nav %}
-  <a class="p-2 btn btn-outline-primary" href="/">Главная страница</a>
+  <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:home' %}">Главная страница</a>
 
-  <a class="p-2 btn btn-outline-primary" href="{% url 'contact' %}">Контакты</a>
+  <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:contact' %}">Контакты</a>
   {% endblock %}
   {% block telo %}
 
@@ -31,7 +31,7 @@
                     <div class="card-body">
                       <p class="card-text">{{ object.descriptions|slice:':100' }}</p>
 
-                      <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'product' category_id=object.id %}">Подробнее</a>
+                      <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'catalog:product' category_id=object.id %}">Подробнее</a>
 
                   </div>
                     </div>
@@ -43,6 +43,6 @@
           </div>
           {% endfor %}
           </div>
-     <a class="p-2 btn btn-outline-primary" href="{% url 'add_categories' %}">добавление категории</a>
+     <a class="m-2 p-2 btn btn-outline-primary" href="{% url 'catalog:add_categories' %}">Добавление категории</a>
 
   {% endblock %}
