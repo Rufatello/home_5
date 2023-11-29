@@ -13,7 +13,7 @@
   {% endblock %}
   {% block telo %}
 
-  <div class="row text-start">
+ <div class="row text-start">
 
   <div class="album py-5 bg-body-tertiary">
 
@@ -24,38 +24,29 @@
           <div class="col">
 
             <div class="card shadow-sm">
-               <img  src="{% mediapath object.image %}" width="100%" height="225">
+               <img  src="{{ object.image|mediapath }}" width="100%" height="225">
               <div class="card-body">
                 <p class="card-text">{{ object.name }}</p>
                 <div class="d-flex justify-content-between align-items-center">
-                  <div class="card-body">
-                      <p class="card-text">{{ object.descripsions|slice:':100' }}</p>
-                    <div class="card-body">
-                        {% if object.pk == 5 %}
-                            <p class="card-text">Цена за 1 упаковку кг - {{ object.price }}р.</p>
-                        {% else %}
-                            <p class="card-text">Цена за 1 кг - {{ object.price }}р.</p>
-                        {% endif %}
-                    </div>
-
                   <div class="btn-group">
-                    <div class="like-container">
-                      <button class="like-button">👍</button>
-                        <p>Лайков {% like_count 6 %}</p>
+                    <div class="card-body">
+                      <p class="card-text">{{ object.descriptions|slice:':100' }}</p>
 
-                    </div>
+                      <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'catalog:views_product' object.pk %}">Купить</a>
+
                   </div>
-                      </div>
                     </div>
                 </div>
-
               </div>
 
             </div>
 
           </div>
           {% endfor %}
-
           </div>
 
   {% endblock %}
+
+
+
+
