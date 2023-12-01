@@ -1,6 +1,7 @@
 from django.db import models
 
-NO = {'blank': True, 'null':True}
+NO = {'blank': True, 'null': True}
+
 
 class Categoties(models.Model):
     name = models.CharField(max_length=100, verbose_name='наименование')
@@ -9,9 +10,11 @@ class Categoties(models.Model):
 
     def __str__(self):
         return f'{self.name}, {self.image}, {self.pk}, {self.descriptions}'
+
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
+
 
 class Product(models.Model):
     name = models.CharField(max_length=100, verbose_name='наименование')
@@ -30,15 +33,14 @@ class Product(models.Model):
         verbose_name_plural = 'Продукты'
 
 
-
-class Block(models.Model):
+class Blog(models.Model):
     title = models.CharField(max_length=150, verbose_name='Заголовок')
-    slug = models.CharField(max_length=150, verbose_name='slug', null=True, blank=True)
+    slug = models.SlugField(max_length=150, verbose_name='slug', null=True, blank=True)
     body = models.TextField(verbose_name='Содержимое')
     photo = models.ImageField(upload_to='photo/', verbose_name='Превью')
     data = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания', null=True, blank=True)
     on_published = models.BooleanField(default=True, verbose_name='статус', null=True, blank=True)
-    count_view = models.IntegerField(verbose_name='соличество просмотров', default=0, null=True, blank=True)
+    count_view = models.PositiveIntegerField(verbose_name='соличество просмотров', default=0)
 
     def __str__(self):
         return f'{self.title}{self.body}'

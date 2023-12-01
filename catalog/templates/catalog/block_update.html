@@ -1,23 +1,23 @@
-  {% extends 'catalog/general.html' %}
-  {% load mediapath %}
- {% block name %}
-  <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-      <h1 class="display-4">Статьи</h1>
-  </div>
-  {% endblock %}
+{% extends 'catalog/general.html' %}
+{% load mediapath %}
+{% block name %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Статьи</h1>
+</div>
+{% endblock %}
 
-  {% block nav %}
-  <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:home' %}">Главная страница</a>
+{% block nav %}
+<a class="p-2 btn btn-outline-primary" href="{% url 'catalog:home' %}">Главная страница</a>
 
-  <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:contact' %}">Контакты</a>
-  {% endblock %}
+<a class="p-2 btn btn-outline-primary" href="{% url 'catalog:contact' %}">Контакты</a>
+{% endblock %}
 
-  {% block telo %}
+{% block telo %}
 <form method='post' enctype="multipart/form-data">
-   {% csrf_token %}
-   {{ form.as_p }}
-   <button>изменить</button>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>изменить</button>
 </form>
 
 
-  {% endblock %}-
+{% endblock %}-
