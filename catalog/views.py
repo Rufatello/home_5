@@ -1,11 +1,47 @@
-from catalog.models import Categoties, Product
+from catalog.models import Categoties, Product, Block
 from django.shortcuts import render
-from django.views.generic import ListView, DeleteView
-
+from django.views.generic import ListView, DeleteView, DetailView, CreateView, UpdateView
+from django.urls import reverse_lazy
+from pytils.translit import slugify
 class CategotiesListView(ListView):
     model = Categoties
     template_name = 'catalog/catalog.html'
 
+class BlockListView(ListView):
+  model = Block
+  
+  def get_queryset(self, *args, **kwargs):
+      queryset = super().get_queryset(*args, **kwargs)
+      queryset=queryset.filter(on_published=True)
+      return queryset
+
+class BlockCreateView(CreateView):
+    model = Block
+    fields = ('title', 'body', 'photo', 'on_published')
+    template_name = 'catalog/block_create.html'
+    success_url = reverse_lazy('catalog:block_list')
+
+    def form_valid(self, form):
+        if form.is_valid():
+            new_mat = form.save()
+            new_mat.slug = slugify(new_mat.title)
+            new_mat.save()
+        return super().form_valid(form)
+class BlockUpdateView(UpdateView):
+    model = Block
+    fields = ('title', 'body', 'photo', 'on_published')
+    template_name = 'catalog/block_update.html'
+    # success_url = reverse_lazy('catalog:block_detail')
+
+
+class BlockDetailView(DetailView):
+    model = Block
+
+    def get_object(self, queryset=None):
+        self.object=super().get_object(queryset)
+        self.object.count_view +=1
+        self.object.save()
+        return self.object
 
 
 def home(request):
@@ -65,3 +101,4 @@ def add_categories(request):
 # #         'product': product_item,
 # #     }
 # #     return render(request, 'catalog/views_product.html', context)
+
