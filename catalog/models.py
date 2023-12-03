@@ -48,3 +48,16 @@ class Blog(models.Model):
     class Meta:
         verbose_name = 'Блог'
         verbose_name_plural = 'Блоговые записи'
+
+
+class Contact(models.Model):
+    name = models.CharField(verbose_name='имя', max_length=100)
+    phone = models.IntegerField(verbose_name='Телефон')
+    message = models.TextField(verbose_name='Сообщение')
+
+    class Meta:
+        verbose_name = 'Контакт'
+        verbose_name_plural = 'Контакты'
+
+    def __str__(self):
+        return f'{self.name}'

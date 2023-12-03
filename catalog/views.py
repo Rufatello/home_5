@@ -1,8 +1,10 @@
 from catalog.models import Categoties, Product, Blog
 from django.shortcuts import render
-from django.views.generic import ListView, DeleteView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, View
+
 from django.urls import reverse_lazy
 from pytils.translit import slugify
+from django.utils.text import slugify
 
 
 class CategotiesListView(ListView):
@@ -13,38 +15,30 @@ class CategotiesListView(ListView):
 class BlogListView(ListView):
     model = Blog
 
-    def get_queryset(self, *args, **kwargs):
-        queryset = super().get_queryset(*args, **kwargs)
+    def get_queryset(self):
+        queryset = super().get_queryset()
         queryset = queryset.filter(on_published=True)
         return queryset
 
 
-# class SlugifyBlogMixin:
-#     def form_valid(self, form):
-#         block = form.save(commit=False)
-#         block.slug = slugify(block.title)
-#         block.save()
-#
-#         return super().form_valid(form)
-
-
-class BlogCreateView(CreateView):
-    model = Blog
-    fields = ('title', 'body', 'photo', 'on_published')
-    template_name = 'catalog/block_create.html'
-    success_url = reverse_lazy('catalog:block_list')
-
+class SlugifyBlogMixin:
     def form_valid(self, form):
-        if form.is_valid():
-            new_mat = form.save()
-            new_mat.slug = slugify(new_mat.title)
-            new_mat.save()
+        block = form.save(commit=False)
+        block.slug = slugify(block.title)
+        block.save()
         return super().form_valid(form)
 
 
-class BlogUpdateView(UpdateView):
+class BlogCreateView(SlugifyBlogMixin, CreateView):
     model = Blog
-    fields = ('title', 'body', 'photo', 'on_published')
+    fields = ('title', 'body', 'photo')
+    template_name = 'catalog/block_create.html'
+    success_url = reverse_lazy('catalog:block_list')
+
+
+class BlogUpdateView(SlugifyBlogMixin, UpdateView):
+    model = Blog
+    fields = ('title', 'body', 'photo')
     template_name = 'catalog/block_update.html'
     success_url = reverse_lazy('catalog:block_list')
 
@@ -59,44 +53,50 @@ class BlogDetailView(DetailView):
         return self.object
 
 
-def home(request):
-    return render(request, 'catalog/home.html')
+class HomeCreateView(CreateView):
+    def get(self, request):
+        return render(request, 'catalog/home.html')
 
 
-def contact(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        phone = request.POST.get('phone')
-        message = request.POST.get('message')
-        print(name, phone, message)
-    return render(request, 'catalog/contact.html')
+class ContactView(View):
+    template_name = 'catalog/contact.html'
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+    def post(self, request):
+        if request.method == 'POST':
+            name = request.POST.get('name')
+            phone = request.POST.get('phone')
+            message = request.POST.get('message')
+            print(name, phone, message)
+        return render(request, self.template_name)
 
 
-class ProductDeleteView(DeleteView):
+class ProductDetailView(DetailView):
     model = Product
     template_name = 'catalog/views_product.html'
 
 
-def product(request, category_id):
-    category = Categoties.objects.get(id=category_id)
-    product_list = Product.objects.filter(categories_id=category)
+class ProductListView(ListView):
+    model = Product
+    template_name = 'catalog/product.html'
+    context_object_name = 'object_list'
 
-    context = {
-        'object_list': product_list,
-        'category': category
-    }
-    return render(request, 'catalog/product.html', context)
+    def get_queryset(self):
+        category_id = self.kwargs['category_id']
+        category = Categoties.objects.get(id=category_id)
+        return Product.objects.filter(categories=category)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        category_id = self.kwargs['category_id']
+        context['category'] = Categoties.objects.get(id=category_id)
+        return context
 
 
-class add_categoriesCreateView(CreateView):
+class AddCategoriesCreateView(CreateView):
     model = Categoties
     fields = ('name', 'descriptions', 'image')
     template_name = 'catalog/add_categories.html'
     success_url = reverse_lazy('catalog:catalog')
-
-
-class BlogCreateView(CreateView):
-    model = Blog
-    fields = ('title', 'body', 'photo', 'on_published')
-    template_name = 'catalog/block_create.html'
-    success_url = reverse_lazy('catalog:block_list')

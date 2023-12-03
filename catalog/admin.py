@@ -1,5 +1,5 @@
 from django.contrib import admin
-from catalog.models import Product, Categoties, Blog
+from catalog.models import Product, Categoties, Blog, Contact
 
 
 @admin.register(Product)
@@ -20,3 +20,8 @@ class BlockAdmin(admin.ModelAdmin):
     list_filter = ('on_published',)
     readonly_fields = ('count_view',)
     prepopulated_fields = {'slug': ('title',)}
+
+
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('name','phone','message')
