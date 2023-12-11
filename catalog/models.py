@@ -66,7 +66,7 @@ class Contact(models.Model):
 class Versions(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='продукт')
     numb_versions = models.IntegerField(**NO, verbose_name='номер версии')
-    name_versions = models.CharField(max_length=150, verbose_name='номер версии')
+    name_versions = models.CharField(max_length=150, verbose_name='имя версии')
     is_active = models.BooleanField(default=True, verbose_name='активная версия')
 
     class Meta:

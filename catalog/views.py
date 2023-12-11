@@ -110,6 +110,17 @@ class ProductListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
+        for product in context['object_list']:
+            active_version = product.versions_set.filter(is_active=True).first()
+
+            if active_version:
+                product.active_version_number = active_version.numb_versions
+                product.active_version_name = active_version.name_versions
+            else:
+                product.active_version_number = None
+                product.active_version_name = None
+
         category_id = self.kwargs['category_id']
         context['category'] = Categoties.objects.get(id=category_id)
         return context
@@ -147,8 +158,26 @@ class ProductCreateView(CreateView):
         return super().form_valid(form)
 
 
-class ProductUpdate(VersionMixin, UpdateView):
+class ProductUpdate(UpdateView):
     model = Product
     form_class = ProductForm
     template_name = 'catalog/productUpdate.html'
     success_url = reverse_lazy('catalog:catalog')
+
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data()
+        VersionsFormset = inlineformset_factory(Product, Versions, form=VersionsForm, extra=1)
+        if self.request.method == 'POST':
+            context_data['formset'] = VersionsFormset(self.request.POST, instance=self.object)
+        else:
+
+            context_data['formset'] = VersionsFormset(instance=self.object)
+        return context_data
+
+    def form_valid(self, form):
+        formset = self.get_context_data()['formset']
+        self.object = form.save()
+        if formset.is_valid():
+            formset.instance = self.object
+            formset.save()
+        return super().form_valid(form)
