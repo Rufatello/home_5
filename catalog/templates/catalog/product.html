@@ -34,6 +34,8 @@
 
                                         <a type="button" class="btn btn-sm btn-outline-secondary"
                                            href="{% url 'catalog:views_product' object.pk %}">Купить</a>
+                                        <a type="button" class="btn btn-sm btn-outline-secondary"
+                                           href="{% url 'catalog:ProductUpdate' object.pk %}">Редактировать</a>
 
                                     </div>
                                 </div>
@@ -44,6 +46,8 @@
 
                 </div>
                 {% endfor %}
+                <a class="m-2 p-2 btn btn-outline-primary" href="{% url 'catalog:ProductCreate' %}">Добавление
+                продукта</a>
             </div>
 
             {% endblock %}

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from catalog.models import Product, Categoties, Blog, Contact
+from catalog.models import Product, Categoties, Blog, Contact, Versions
 
 
 @admin.register(Product)
@@ -25,3 +25,7 @@ class BlockAdmin(admin.ModelAdmin):
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('name','phone','message')
+
+@admin.register(Versions)
+class VersionsAdmin(admin.ModelAdmin):
+    list_display = ('is_active',)

@@ -9,7 +9,7 @@ class Categoties(models.Model):
     image = models.ImageField(upload_to='Categoties/', verbose_name='фото')
 
     def __str__(self):
-        return f'{self.name}, {self.image}, {self.pk}, {self.descriptions}'
+        return f'{self.name}'
 
     class Meta:
         verbose_name = 'Категория'
@@ -22,8 +22,8 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products/', **NO, verbose_name='фото')
     categories = models.ForeignKey(Categoties, on_delete=models.CASCADE, verbose_name='категория')
     price = models.IntegerField(verbose_name='цена')
-    date_of_creation = models.DateField(verbose_name='дата создания', **NO)
-    data_last = models.DateField(verbose_name='дата создания', **NO)
+    date_of_creation = models.DateField(verbose_name='дата создания', **NO, auto_now_add=True)
+    data_last = models.DateField(verbose_name='дата создания', **NO, auto_now_add=True)
 
     def __str__(self):
         return f'{self.name}, {self.categories}, {self.price},{self.descripsions}, {self.price}'
@@ -61,3 +61,17 @@ class Contact(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+
+
+class Versions(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='продукт')
+    numb_versions = models.IntegerField(**NO, verbose_name='номер версии')
+    name_versions = models.CharField(max_length=150, verbose_name='номер версии')
+    is_active = models.BooleanField(default=True, verbose_name='активная версия')
+
+    class Meta:
+        verbose_name = 'Версия'
+        verbose_name_plural = 'Версии'
+    def __str__(self):
+        return f'{self.is_active}'
+
