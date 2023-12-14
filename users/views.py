@@ -47,6 +47,3 @@ class CodeView(View):
             user_code.is_active = True
             user_code.save()
             return redirect('users:login')
-
-        context = {'error': 'Invalid verification code.'}
-        return render(request, self.template_name, context)
