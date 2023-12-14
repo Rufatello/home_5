@@ -18,27 +18,19 @@ class LoginView(BaseLoginView):
 class RegisterView(CreateView):
     model = User
     form_class = UserForm
-    success_url = reverse_lazy('catalog:home')
+    success_url = reverse_lazy('users:code')
     template_name = 'users/register.html'
 
     def form_valid(self, form):
         new_user = form.save()
         send_mail(
             subject='салам алейкум ержан',
-            message=f'перейдите по этой ссылке: http://127.0.0.1:8000/users/code/,  введите код: {new_user.ver_code}',
+            message=f' введите код: {new_user.ver_code}',
             from_email=settings.EMAIL_HOST_USER,
             recipient_list=[new_user.email]
         )
 
         return super().form_valid(form)
-
-# class CodeCreateView(CreateView):
-#     model = User
-#     fields = ('ver_code',)
-#     template_name = 'users/code.html'
-#     success_url = reverse_lazy('catalog:home')
-
-from django.http import HttpResponse
 
 
 class CodeView(View):
