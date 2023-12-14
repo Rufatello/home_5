@@ -5,41 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5ebd1365-f65c-4cb3-928b-5a2a7abe2aa6" name="Changes" comment="finaly">
-      <change afterPath="$PROJECT_DIR$/.idea/home_5.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/management/commands/commands.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/migrations/0002_alter_user_is_active.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/migrations/0003_user_ver_code.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/templates/users/code.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/templates/users/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/templates/users/register.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog/templates/catalog/add_categories.html" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/templates/catalog/add_categories.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog/templates/catalog/block_create.html" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/templates/catalog/block_create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog/templates/catalog/block_update.html" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/templates/catalog/block_update.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog/templates/catalog/blog_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/templates/catalog/blog_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog/templates/catalog/blog_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/templates/catalog/blog_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog/templates/catalog/catalog.html" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/templates/catalog/catalog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog/templates/catalog/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/templates/catalog/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog/templates/catalog/general.html" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/templates/catalog/general.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog/templates/catalog/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/templates/catalog/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog/templates/catalog/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/templates/catalog/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catalog/templates/catalog/views_product.html" beforeDir="false" afterPath="$PROJECT_DIR$/catalog/templates/catalog/views_product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/data.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/templates/users/code.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/users/code.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +78,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702301721956</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="finaly">
+      <option name="closed" value="true" />
+      <created>1702544836129</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1702544836129</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
