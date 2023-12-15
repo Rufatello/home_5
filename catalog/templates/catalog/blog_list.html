@@ -9,6 +9,7 @@
 
 
   {% block telo %}
+  {% if user.is_authenticated %}
 
   <div class="row text-start">
 
@@ -39,5 +40,9 @@
           {% endfor %}
           </div>
      <a class="m-2 p-2 btn btn-outline-primary" href="{% url 'catalog:block_create' %}">Добавить статью</a>
-
-  {% endblock %}
+        </div>
+    </div>
+    {% else %}
+    зарегистрируйтесь
+    {% endif %}
+    {% endblock %}

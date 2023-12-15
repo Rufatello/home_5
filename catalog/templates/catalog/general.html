@@ -22,7 +22,7 @@
     <button type="submit" class="p-2 btn btn-outline-primary">Выход</button>
 </form>
 
-<a class="p-2 btn btn-outline-primary" href="{% url 'users:login' %}">Личный кабинет</a>
+<a class="p-2 btn btn-outline-primary" href="{% url 'users:profile' %}">Редактировать профиль</a>
 {% else %}
 <a class="p-2 btn btn-outline-primary" href="{% url 'users:login' %}">Вход</a>
 <a class="p-2 btn btn-outline-primary" href="{% url 'users:register' %}">Регистрация</a>
@@ -38,6 +38,7 @@
 
 {% endblock %}
 <div class="container">
+
     {% block telo %}
     {% endblock %}
     <footer class="pt-4 my-md-5 pt-md-5 border-top">

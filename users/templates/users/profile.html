@@ -1,0 +1,16 @@
+{% extends 'catalog/general.html' %}
+{%block telo%}
+<form method='post' enctype="multipart/form-data">
+    <div class="col-6">
+    {% csrf_token %}
+    {{ form.as_p }}
+   {{formset.management_form }}
+        {% for form in formset.forms %}
+            {{form.as_p}}
+        {% endfor %}
+    <button>сохранить</button>
+
+
+</form>
+<a class="p-2 btn btn-outline-primary" href="{% url 'users:new_password' %}">Сгенирировать новый пароль</a>
+{% endblock %}
