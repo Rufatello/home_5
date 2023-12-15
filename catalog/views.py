@@ -7,9 +7,9 @@ from django.urls import reverse_lazy
 from pytils.translit import slugify
 from django.utils.text import slugify
 from django.contrib.auth.mixins import UserPassesTestMixin
-class ProductCreationMixin(UserPassesTestMixin):
-    def test_func(self):
-        return self.request.user.is_authenticated
+
+
+
 
 class CategotiesListView(ListView):
     model = Categoties
@@ -136,7 +136,7 @@ class AddCategoriesCreateView(CreateView):
     success_url = reverse_lazy('catalog:catalog')
 
 
-class ProductCreateView(ProductCreationMixin, CreateView):
+class ProductCreateView(CreateView):
     model = Product
     form_class = ProductForm
     template_name = 'catalog/ProductCreate.html'
@@ -155,6 +155,8 @@ class ProductCreateView(ProductCreationMixin, CreateView):
     def form_valid(self, form):
         formset = self.get_context_data()['formset']
         self.object = form.save()
+        self.object.user = self.request.user
+        self.object.save()
         if formset.is_valid():
             formset.instance = self.object
             formset.save()
