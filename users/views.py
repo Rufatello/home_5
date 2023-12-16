@@ -51,7 +51,7 @@ class CodeView(View):
 
     def post(self, request):
         code = request.POST.get('code')
-        user = Useshr.objects.filter(code=code).first()
+        user = User.objects.filter(code=code).first()
 
         if user is not None and user.code == code:
             user.is_active = True
