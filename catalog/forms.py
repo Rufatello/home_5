@@ -1,7 +1,7 @@
 from django import forms
 from catalog.models import Product, Versions
-a = 'казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар'
 
+a = 'казино', 'криптовалюта', 'крипта', 'биржа', 'дешево', 'бесплатно', 'обман', 'полиция', 'радар'
 
 
 class ProductForm(forms.ModelForm):
@@ -17,8 +17,8 @@ class ProductForm(forms.ModelForm):
 
         return cleaned_data
 
+
 class VersionsForm(forms.ModelForm):
     class Meta:
         model = Versions
         fields = '__all__'
-

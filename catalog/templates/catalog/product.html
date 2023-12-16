@@ -27,8 +27,9 @@
                                 <div class="btn-group">
                                     <div class="card-body">
                                         {% if object.active_version_number %}
-                                        <p>Активная версия: №{{ object.active_version_number }} - {{ object.active_version_name }}</p>
-                                            {% endif %}
+                                        <p>Активная версия: №{{ object.active_version_number }} - {{
+                                            object.active_version_name }}</p>
+                                        {% endif %}
                                         <a type="button" class="btn btn-sm btn-outline-secondary"
                                            href="{% url 'catalog:views_product' object.pk %}">Купить</a>
                                         <a type="button" class="btn btn-sm btn-outline-secondary"
@@ -45,7 +46,7 @@
                 {% endfor %}
 
             </div>
-             <a class="m-2 p-2 btn btn-outline-primary" href="{% url 'catalog:ProductCreate' %}">Добавление продукта</a>
+            <a class="m-2 p-2 btn btn-outline-primary" href="{% url 'catalog:ProductCreate' %}">Добавление продукта</a>
             {% endblock %}
 
 

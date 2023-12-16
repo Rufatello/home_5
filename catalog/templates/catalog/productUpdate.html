@@ -3,13 +3,13 @@
 {%block telo%}
 <form method='post' enctype="multipart/form-data">
     <div class="col-6">
-    {% csrf_token %}
-    {{ form.as_p }}
-   {{formset.management_form }}
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{formset.management_form }}
         {% for form in formset.forms %}
-            {{form.as_p}}
+        {{form.as_p}}
         {% endfor %}
-    <button>Добавить</button>
+        <button>Добавить</button>
 
 
 </form>

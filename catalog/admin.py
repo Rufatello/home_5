@@ -24,7 +24,8 @@ class BlockAdmin(admin.ModelAdmin):
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ('name','phone','message')
+    list_display = ('name', 'phone', 'message')
+
 
 @admin.register(Versions)
 class VersionsAdmin(admin.ModelAdmin):

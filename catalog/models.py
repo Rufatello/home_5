@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+
 NO = {'blank': True, 'null': True}
 
 
@@ -73,6 +74,6 @@ class Versions(models.Model):
     class Meta:
         verbose_name = 'Версия'
         verbose_name_plural = 'Версии'
+
     def __str__(self):
         return f'{self.is_active}'
-

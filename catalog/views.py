@@ -9,8 +9,6 @@ from django.utils.text import slugify
 from django.contrib.auth.mixins import UserPassesTestMixin
 
 
-
-
 class CategotiesListView(ListView):
     model = Categoties
     template_name = 'catalog/catalog.html'
@@ -32,6 +30,7 @@ class SlugifyBlogMixin:
         block.save()
         return super().form_valid(form)
 
+
 class VersionMixin:
 
     def get_context_data(self, **kwargs):
@@ -51,6 +50,7 @@ class VersionMixin:
             formset.instance = self.object
             formset.save()
         return super().form_valid(form)
+
 
 class BlogCreateView(SlugifyBlogMixin, CreateView):
     model = Blog

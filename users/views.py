@@ -13,6 +13,8 @@ from django.contrib.auth import get_user_model
 import random
 
 User = get_user_model()
+
+
 class LogoutView(BaseLogoutView):
     pass
 

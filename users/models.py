@@ -13,4 +13,3 @@ class User(AbstractUser):
     code = models.CharField(max_length=15, verbose_name='код', **NO)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
-

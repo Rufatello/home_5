@@ -7,47 +7,47 @@
 </div>
 {% endblock %}
 
-    {% block telo %}
+{% block telo %}
 {% if user.is_authenticated %}
 
-    <div class="row text-start">
+<div class="row text-start">
 
-        <div class="album py-5 bg-body-tertiary">
+    <div class="album py-5 bg-body-tertiary">
 
-            <div class="container">
+        <div class="container">
 
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    {% for object in object_list %}
-                    <div class="col">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                {% for object in object_list %}
+                <div class="col">
 
-                        <div class="card shadow-sm">
-                            <img src="{{ object.image|mediapath }}" width="100%" height="225">
-                            <div class="card-body">
-                                <p class="card-text">{{ object.name }}</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <div class="card-body">
-                                            <p class="card-text">{{ object.descriptions|slice:':100' }}</p>
+                    <div class="card shadow-sm">
+                        <img src="{{ object.image|mediapath }}" width="100%" height="225">
+                        <div class="card-body">
+                            <p class="card-text">{{ object.name }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <div class="card-body">
+                                        <p class="card-text">{{ object.descriptions|slice:':100' }}</p>
 
-                                            <a type="button" class="btn btn-sm btn-outline-secondary"
-                                               href="{% url 'catalog:product' category_id=object.id %}">Подробнее</a>
+                                        <a type="button" class="btn btn-sm btn-outline-secondary"
+                                           href="{% url 'catalog:product' category_id=object.id %}">Подробнее</a>
 
-                                        </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
 
                     </div>
-                    {% endfor %}
+
                 </div>
-                <a class="m-2 p-2 btn btn-outline-primary" href="{% url 'catalog:add_categories' %}">Добавление
-                    категории</a>
-                {% else %}
-    dasdasd
-    {% endif %}
-{% endblock %}
+                {% endfor %}
+            </div>
+            <a class="m-2 p-2 btn btn-outline-primary" href="{% url 'catalog:add_categories' %}">Добавление
+                категории</a>
+            {% else %}
+            dasdasd
+            {% endif %}
+            {% endblock %}
 
 
 
