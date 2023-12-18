@@ -5,6 +5,7 @@ from catalog.forms import ProductForm, VersionsForm
 from django.forms import inlineformset_factory
 from django.urls import reverse_lazy
 from pytils.translit import slugify
+from django.http import Http404
 from django.utils.text import slugify
 from django.contrib.auth.mixins import UserPassesTestMixin
 
@@ -169,13 +170,21 @@ class ProductUpdate(UpdateView):
     template_name = 'catalog/productUpdate.html'
     success_url = reverse_lazy('catalog:catalog')
 
+
+
+    def get_object(self, queryset=None):
+        self.object = super().get_object(queryset)
+        if self.object.user != self.request.user and not self.request.user.is_staff:
+            raise Http404("Вы не являетесь владельцем этого товара")
+        return self.object
+
+
     def get_context_data(self, **kwargs):
         context_data = super().get_context_data()
         VersionsFormset = inlineformset_factory(Product, Versions, form=VersionsForm, extra=1)
         if self.request.method == 'POST':
             context_data['formset'] = VersionsFormset(self.request.POST, instance=self.object)
         else:
-
             context_data['formset'] = VersionsFormset(instance=self.object)
         return context_data
 
