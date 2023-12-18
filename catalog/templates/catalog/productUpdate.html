@@ -5,10 +5,12 @@
     <div class="col-6">
         {% csrf_token %}
         {{ form.as_p }}
+    {% if  perms.catalog.change_versions %}
         {{formset.management_form }}
         {% for form in formset.forms %}
         {{form.as_p}}
         {% endfor %}
+    {% endif %}
         <button>Добавить</button>
 
 

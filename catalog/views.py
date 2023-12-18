@@ -1,7 +1,7 @@
 from catalog.models import Categoties, Product, Blog, Versions
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, View
-from catalog.forms import ProductForm, VersionsForm
+from catalog.forms import ProductForm, VersionsForm, ProductForms
 from django.forms import inlineformset_factory
 from django.urls import reverse_lazy
 from pytils.translit import slugify
@@ -195,3 +195,9 @@ class ProductUpdate(UpdateView):
             formset.instance = self.object
             formset.save()
         return super().form_valid(form)
+
+    def get_form_class(self):
+        if self.request.user.is_staff:
+            return ProductForms
+        else:
+            return ProductForm

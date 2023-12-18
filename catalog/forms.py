@@ -22,3 +22,9 @@ class VersionsForm(forms.ModelForm):
     class Meta:
         model = Versions
         fields = '__all__'
+
+
+class ProductForms(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ('is_published', 'categories', 'descripsions')
