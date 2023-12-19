@@ -7,15 +7,15 @@ from django.urls import reverse_lazy
 from pytils.translit import slugify
 from django.http import Http404
 from django.utils.text import slugify
-from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class CategotiesListView(ListView):
+class CategotiesListView(LoginRequiredMixin, ListView):
     model = Categoties
     template_name = 'catalog/catalog.html'
 
 
-class BlogListView(ListView):
+class BlogListView(LoginRequiredMixin, ListView):
     model = Blog
 
     def get_queryset(self):
@@ -53,21 +53,21 @@ class VersionMixin:
         return super().form_valid(form)
 
 
-class BlogCreateView(SlugifyBlogMixin, CreateView):
+class BlogCreateView(LoginRequiredMixin, SlugifyBlogMixin, CreateView):
     model = Blog
     fields = ('title', 'body', 'photo')
     template_name = 'catalog/block_create.html'
     success_url = reverse_lazy('catalog:block_list')
 
 
-class BlogUpdateView(SlugifyBlogMixin, UpdateView):
+class BlogUpdateView(LoginRequiredMixin, SlugifyBlogMixin, UpdateView):
     model = Blog
     fields = ('title', 'body', 'photo')
     template_name = 'catalog/block_update.html'
     success_url = reverse_lazy('catalog:block_list')
 
 
-class BlogDetailView(DetailView):
+class BlogDetailView(LoginRequiredMixin, DetailView):
     model = Blog
 
     def get_object(self, queryset=None):
@@ -82,7 +82,7 @@ class HomeCreateView(CreateView):
         return render(request, 'catalog/home.html')
 
 
-class ContactView(View):
+class ContactView(LoginRequiredMixin, View):
     template_name = 'catalog/contact.html'
 
     def get(self, request):
@@ -97,12 +97,12 @@ class ContactView(View):
         return render(request, self.template_name)
 
 
-class ProductDetailView(DetailView):
+class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
     template_name = 'catalog/views_product.html'
 
 
-class ProductListView(ListView):
+class ProductListView(LoginRequiredMixin, ListView):
     model = Product
     template_name = 'catalog/product.html'
     context_object_name = 'object_list'
@@ -130,14 +130,14 @@ class ProductListView(ListView):
         return context
 
 
-class AddCategoriesCreateView(CreateView):
+class AddCategoriesCreateView(LoginRequiredMixin, CreateView):
     model = Categoties
     fields = ('name', 'descriptions', 'image')
     template_name = 'catalog/add_categories.html'
     success_url = reverse_lazy('catalog:catalog')
 
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
     template_name = 'catalog/ProductCreate.html'
@@ -164,7 +164,7 @@ class ProductCreateView(CreateView):
         return super().form_valid(form)
 
 
-class ProductUpdate(UpdateView):
+class ProductUpdate(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     template_name = 'catalog/productUpdate.html'
