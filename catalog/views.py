@@ -1,3 +1,6 @@
+from django.conf import settings
+from django.core.cache import cache
+
 from catalog.models import Categoties, Product, Blog, Versions
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, View
@@ -9,10 +12,16 @@ from django.http import Http404
 from django.utils.text import slugify
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from catalog.services import get_category_cache
+
 
 class CategotiesListView(LoginRequiredMixin, ListView):
     model = Categoties
     template_name = 'catalog/catalog.html'
+    def get_context(self):
+        context_data = get_category_cache()
+        return context_data
+
 
 
 class BlogListView(LoginRequiredMixin, ListView):
